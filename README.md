@@ -1,0 +1,1 @@
+A real-world Inventory and warehouse Intelligence Project built Using React , FastAPI, PostgreSQL, and Machine Learning.
