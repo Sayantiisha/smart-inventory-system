@@ -140,4 +140,131 @@ def filter_by_category():
 
 
 
-# connection.close()
+
+## Sales Report Dashboard ##
+
+# def generate_sales_report():
+#     print("Sales Report:")
+
+#     connection = get_connection()
+#     cursor = connection.cursor()
+
+#     # Report 1 : Total Products
+#     cursor.execute("SELECT COUNT(*) FROM products")
+#     total_products = cursor.fetchone()[0]
+#     print(f"Total Products: {total_products}")
+
+
+#     # Report 2 : Average Product Price
+#     cursor.execute('''
+#         SELECT category, AVG(unit_price) 
+#         FROM products
+#         GROUP BY category
+#     ''')
+#     # avg_price_result = cursor.fetchone()[0]
+#     # avg_price = avg_price_result if avg_price_result  else 0
+#     # print(f"Average Product Price: {avg_price:.2f}")
+#     rows = cursor.fetchall()
+
+#     print("\nAverage Product Price by Category")
+#     print("-" * 40)
+
+#     for category, avg_price in rows:
+#      print(f"{category:<15} ₹{avg_price:.2f}")
+
+
+
+#     # Report 3 : Most Expensive Product
+#     cursor.execute('''
+#         SELECT product_name, unit_price 
+#         FROM products 
+#         ORDER BY unit_price DESC 
+#         LIMIT 1
+#     ''')
+#     most_expensive_product = cursor.fetchone()
+#     if most_expensive_product:
+#         print(f"Most Expensive Product: {most_expensive_product[0]} - Price: {most_expensive_product[1]}")
+#     else:
+#         print("No products found.")
+
+
+
+#     # Report 4 (Bonus): Total Stock Value
+#     try:
+#         cursor.execute("""
+#             SELECT SUM(p.unit_price * i.quantity) 
+#             FROM products p 
+#             JOIN inventory i 
+#             ON p.product_id = i.product_id;
+#         """)
+#         total_stock_value = cursor.fetchone()[0]
+#         stock_value = total_stock_value if total_stock_value else 0
+#         print(f"Total Stock Value: ₹{stock_value:.2f}")
+#     except Exception as e:
+#         print("\n[Notice]: Could not calculate Stock Value (Inventory table might be missing).")
+
+#     connection.close()
+
+
+
+def generate_sales_report():
+
+    connection = get_connection()
+    cursor = connection.cursor()
+
+    try:
+
+        print("\n========== SALES REPORT ==========\n")
+
+        # Total Products
+        cursor.execute("SELECT COUNT(*) FROM products")
+        total_products = cursor.fetchone()[0]
+        print(f"Total Products : {total_products}")
+
+        # Average Price
+        cursor.execute("""
+            SELECT category, AVG(unit_price)
+            FROM products
+            GROUP BY category
+        """)
+
+        print("\nAverage Product Price by Category")
+        print("---------------------------------")
+
+        for category, avg_price in cursor.fetchall():
+            print(f"{category:<15} ₹{avg_price:.2f}")
+
+        # Most Expensive Product
+        cursor.execute("""
+            SELECT product_name, unit_price
+            FROM products
+            ORDER BY unit_price DESC
+            LIMIT 1
+        """)
+
+        product = cursor.fetchone()
+
+        if product:
+            print("\nMost Expensive Product")
+            print("----------------------")
+            print(f"Name  : {product[0]}")
+            print(f"Price : ₹{product[1]:.2f}")
+
+        # Total Stock Value
+        try:
+            cursor.execute("""
+                SELECT SUM(p.unit_price * i.quantity)
+                FROM products p
+                JOIN inventory i
+                ON p.product_id = i.product_id
+            """)
+
+            stock_value = cursor.fetchone()[0] or 0
+
+            print(f"\nTotal Stock Value : ₹{stock_value:.2f}")
+
+        except sqlite3.Error:
+            print("\nInventory table not found.")
+
+    finally:
+        connection.close()

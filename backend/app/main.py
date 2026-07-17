@@ -1,6 +1,6 @@
 # from fastapi import FastAPI
 import sqlite3
-from crud import add_product, filter_by_category, search_product, view_products
+from crud import add_product, filter_by_category, search_product, view_products, generate_sales_report
 from crud import update_product
 from crud import delete_product
 
@@ -30,7 +30,8 @@ while True:
     print("4. Delete Product")
     print("5. Search Product")
     print("6. Filter by Category")
-    print("7. Exit")
+    print("7. Generate Sales Report")
+    print("8. Exit")
 
     choice = input("Enter your choice: ")
 
@@ -47,6 +48,8 @@ while True:
     elif choice == "6":
         filter_by_category()
     elif choice == "7":
+        generate_sales_report()
+    elif choice == "8":
         print("Thank You for using the Smart Inventory System.")
         break
     else:
