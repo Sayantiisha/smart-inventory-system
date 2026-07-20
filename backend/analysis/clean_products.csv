@@ -1,0 +1,67 @@
+product_id,product_name,category,unit_price,created_at
+1.0,Laptop,electronics,55000,2026-07-16 13:55:28
+3.0,Keyboard,electronics,1500,2026-07-16 13:55:28
+4.0,Monitor,electronics,3000,2026-07-16 13:55:28
+5.0,Printer,electronics,5000,2026-07-16 13:55:28
+6.0,Desk Chair,furniture,8000,2026-07-16 13:55:28
+7.0,Office Desk,furniture,12000,2026-07-16 13:55:28
+8.0,Notebook,stationery,50,2026-07-16 13:55:28
+10.0,Stapler,stationery,150,2026-07-16 13:55:28
+11.0,Laptop,electronics,55000,2026-07-16 14:14:37
+13.0,Keyboard,electronics,1500,2026-07-16 14:14:37
+14.0,Monitor,electronics,3000,2026-07-16 14:14:37
+15.0,Printer,electronics,5000,2026-07-16 14:14:37
+16.0,Desk Chair,furniture,8000,2026-07-16 14:14:37
+17.0,Office Desk,furniture,12000,2026-07-16 14:14:37
+18.0,Notebook,stationery,50,2026-07-16 14:14:37
+20.0,Stapler,stationery,150,2026-07-16 14:14:37
+21.0,Laptop,electronics,55000,2026-07-16 19:48:52
+23.0,Keyboard,electronics,1500,2026-07-16 19:48:52
+24.0,Monitor,electronics,3000,2026-07-16 19:48:52
+25.0,Printer,electronics,5000,2026-07-16 19:48:52
+26.0,Desk Chair,furniture,8000,2026-07-16 19:48:52
+27.0,Office Desk,furniture,12000,2026-07-16 19:48:52
+28.0,Notebook,stationery,50,2026-07-16 19:48:52
+30.0,Stapler,stationery,150,2026-07-16 19:48:52
+31.0,Laptop,electronics,55000,2026-07-16 19:50:27
+33.0,Keyboard,electronics,1500,2026-07-16 19:50:27
+34.0,Monitor,electronics,3000,2026-07-16 19:50:27
+35.0,Printer,electronics,5000,2026-07-16 19:50:27
+36.0,Desk Chair,furniture,8000,2026-07-16 19:50:27
+37.0,Office Desk,furniture,12000,2026-07-16 19:50:27
+38.0,Notebook,stationery,50,2026-07-16 19:50:27
+40.0,Stapler,stationery,150,2026-07-16 19:50:27
+41.0,Laptop,electronics,55000,2026-07-16 19:50:37
+43.0,Keyboard,electronics,1500,2026-07-16 19:50:37
+44.0,Monitor,electronics,3000,2026-07-16 19:50:37
+45.0,Printer,electronics,5000,2026-07-16 19:50:37
+46.0,Desk Chair,furniture,8000,2026-07-16 19:50:37
+47.0,Office Desk,furniture,12000,2026-07-16 19:50:37
+48.0,Notebook,stationery,50,2026-07-16 19:50:37
+50.0,Stapler,stationery,150,2026-07-16 19:50:37
+51.0,Laptop,electronics,55000,2026-07-16 19:50:45
+53.0,Keyboard,electronics,1500,2026-07-16 19:50:45
+54.0,Monitor,electronics,3000,2026-07-16 19:50:45
+55.0,Printer,electronics,5000,2026-07-16 19:50:45
+56.0,Desk Chair,furniture,8000,2026-07-16 19:50:45
+57.0,Office Desk,furniture,12000,2026-07-16 19:50:45
+58.0,Notebook,stationery,50,2026-07-16 19:50:45
+60.0,Stapler,stationery,150,2026-07-16 19:50:45
+61.0,Laptop,electronics,55000,2026-07-16 19:50:50
+63.0,Keyboard,electronics,1500,2026-07-16 19:50:50
+64.0,Monitor,electronics,3000,2026-07-16 19:50:50
+65.0,Printer,electronics,5000,2026-07-16 19:50:50
+66.0,Desk Chair,furniture,8000,2026-07-16 19:50:50
+67.0,Office Desk,furniture,12000,2026-07-16 19:50:50
+68.0,Notebook,stationery,50,2026-07-16 19:50:50
+70.0,Stapler,stationery,150,2026-07-16 19:50:50
+,mouse,electronics,3500,2026-07-17 11:27:22
+,Webcam,electronics,2500,2026-07-17 11:46:47
+,Webcam,electronics,2500,2026-07-17 11:46:51
+,Webcam,electronics,2500,2026-07-17 12:35:11
+,Webcam,electronics,2500,2026-07-17 12:35:13
+,Webcam,electronics,2500,2026-07-17 12:37:46
+,Printer,electronics,3500,2026-07-17 12:38:26
+,Webcam,electronics,2500,2026-07-17 12:38:29
+,Webcam,electronics,2500,2026-07-17 13:19:25
+,Pen,stationary,20,2026-07-17 14:26:53
