@@ -216,3 +216,14 @@ def health_check():
         "status" :"OK",
         "message" : "API is running successfully"
     } 
+
+
+
+@router.get("/dashboard")
+def dashboard():
+    return{
+        "totalProducts" : 250 ,
+        "totalRevenue" : 480000 ,
+        "totalSales" : 820,
+        "lowStock" : 18
+    }
