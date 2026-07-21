@@ -59,3 +59,20 @@
 .profile small{
     color:gray;
 }
+
+
+@media (max-width:768px){
+
+.search-box{
+    width:180px;
+}
+
+.profile div{
+    display:none;
+}
+
+.navbar{
+    padding:15px;
+}
+
+}

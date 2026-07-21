@@ -45,3 +45,24 @@
     background: #2563eb;
     color: white;
 }
+
+
+@media (max-width:768px){
+
+.sidebar{
+
+    width:100%;
+    height:auto;
+    display:flex;
+    overflow-x:auto;
+
+}
+
+.sidebar ul{
+
+    display:flex;
+    gap:15px;
+
+}
+
+}
