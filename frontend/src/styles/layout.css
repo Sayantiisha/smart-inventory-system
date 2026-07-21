@@ -1,13 +1,13 @@
 .layout{
-    display: flex;
-    min-height: 100vh;
+    display:flex;
 }
 
-.main-content {
-    flex: 1;
-    background: #f5f7fb;
+.main-content{
+    flex:1;
+    background:#f5f7fb;
+    min-height:100vh;
 }
 
-.dashboard{
-    padding: 30px;
+.page-content{
+    padding:25px;
 }

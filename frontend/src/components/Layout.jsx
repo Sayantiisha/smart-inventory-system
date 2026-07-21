@@ -50,28 +50,56 @@
 
 // export default Layout;
 
-import { Outlet } from "react-router-dom";
+// import { Outlet } from "react-router-dom";
 
-import Sidebar from "./sidebar";
+// import Sidebar from "./sidebar";
+// import Navbar from "./Navbar";
+
+// import "../styles/layout.css";
+// import "../styles/dashboard.css";
+
+// function Layout() {
+//     return (
+//         <div className="layout">
+//             <Sidebar />
+
+//             <div className="main-content">
+//                 <Navbar />
+
+//                 <div className="dashboard">
+//                     <Outlet />
+//                 </div>
+//             </div>
+//         </div>
+//     );
+// }
+
+// export default Layout;
+
+
+
+import Sidebar from "./Sidebar";
 import Navbar from "./Navbar";
-
 import "../styles/layout.css";
-import "../styles/dashboard.css";
 
-function Layout() {
-    return (
-        <div className="layout">
-            <Sidebar />
+function Layout({ children }) {
+  return (
+    <div className="layout">
 
-            <div className="main-content">
-                <Navbar />
+      <Sidebar />
 
-                <div className="dashboard">
-                    <Outlet />
-                </div>
-            </div>
+      <div className="main-content">
+
+        <Navbar />
+
+        <div className="page-content">
+          {children}
         </div>
-    );
+
+      </div>
+
+    </div>
+  );
 }
 
 export default Layout;
