@@ -4,6 +4,7 @@ import Dashboard from "./pages/Dashboard";
 import Products from "./pages/Products";
 import Analytics from "./pages/Analytics";
 import Prediction from "./pages/Prediction";
+import Settings from "./pages/Settings";
 
 function App() {
     return (
@@ -14,6 +15,7 @@ function App() {
                     <Route path="products" element={<Products />} />
                     <Route path="analytics" element={<Analytics />} />
                     <Route path="prediction" element={<Prediction />} />
+                    <Route path="settings" element={<Settings/>} />
                 </Route>
             </Routes>
         </BrowserRouter>
