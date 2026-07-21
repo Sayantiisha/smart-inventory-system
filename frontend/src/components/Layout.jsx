@@ -77,7 +77,7 @@
 // export default Layout;
 
 
-
+import { Outlet } from "react-router-dom";
 import Sidebar from "./Sidebar";
 import Navbar from "./Navbar";
 import "../styles/layout.css";
@@ -93,7 +93,8 @@ function Layout({ children }) {
         <Navbar />
 
         <div className="page-content">
-          {children}
+            
+          <Outlet/>
         </div>
 
       </div>
