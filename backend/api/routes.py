@@ -187,8 +187,8 @@ def get_product(product_id : int):
     cursor.execute(
         """
         SELECT * FROM products
-        WHERE product_id = ?,
-        """
+        WHERE product_id = ?
+        """,
         (product_id,)
     )
 
