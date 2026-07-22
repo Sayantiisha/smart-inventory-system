@@ -1,0 +1,29 @@
+.footer{
+    margin-top:40px;
+    padding:20px;
+    background:#ffffff;
+    border-top:1px solid #e5e7eb;
+    text-align:center;
+}
+
+.footer-content{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:10px;
+}
+
+.footer p{
+    color:#6b7280;
+    font-size:14px;
+}
+
+@media (max-width:768px){
+
+.footer-content{
+    flex-direction:column;
+    text-align:center;
+}
+
+}

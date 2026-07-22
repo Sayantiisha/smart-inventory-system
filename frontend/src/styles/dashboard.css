@@ -63,6 +63,26 @@
 }
 
 
+.loading-container,
+.error-container,
+.empty-container{
+    height:60vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:24px;
+    font-weight:600;
+    color:#374151;
+}
+
+.error-container{
+    color:#dc2626;
+}
+
+.empty-container{
+    color:#6b7280;
+}
+
 /* Tablet */
 
 @media (max-width:992px){
