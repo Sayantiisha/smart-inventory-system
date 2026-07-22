@@ -9,6 +9,26 @@
     box-shadow: 3px 0 15px rgba(0,0,0,.1);
 }
 
+.sidebar{
+    background:#111827;
+}
+
+.sidebar a{
+    color:#d1d5db;
+    transition:.3s;
+}
+
+.sidebar a:hover{
+    background:#2563eb;
+    color:white;
+}
+
+.sidebar .active{
+    background:#2563eb;
+    color:white;
+    border-radius:10px;
+}
+
 .logo {
     margin-bottom: 40px;
     font-size: 28px;
@@ -46,6 +66,17 @@
     color: white;
 }
 
+.sidebar-logo{
+    font-size:24px;
+    font-weight:700;
+    color:white;
+    letter-spacing:1px;
+}
+
+.sidebar a{
+    font-size:15px;
+    font-weight:500;
+}
 
 @media (max-width:768px){
 

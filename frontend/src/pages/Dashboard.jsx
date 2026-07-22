@@ -55,6 +55,7 @@
 
 
 import { useEffect, useState } from "react";
+import StatCard from "../components/StatCard";
 import api from "../services/api";
 import {
   Package,
@@ -88,7 +89,7 @@ function Dashboard() {
     <>
       <h1 className="dashboard-title">Dashboard</h1>
 
-      <div className="dashboard-cards">
+      {/* <div className="dashboard-cards">
 
         <div className="dashboard-card">
           <div>
@@ -120,9 +121,39 @@ function Dashboard() {
             <h2>{stats.lowStock}</h2>
           </div>
           <AlertTriangle size={42} />
+        </div> */}
+
+      {/* </div> */}
+
+        <div className="dashboard-cards">
+
+          <StatCard
+            title="Total Products"
+            value={stats.totalProducts}
+            icon={<Package size={42} />}
+          />
+
+          <StatCard
+            title="Total Revenue"
+            value={`₹ ${stats.totalRevenue}`}
+            icon={<IndianRupee size={42} />}
+          />
+
+          <StatCard
+            title="Total Sales"
+            value={stats.totalSales}
+            icon={<TrendingUp size={42} />}
+          />
+
+          <StatCard
+            title="Low Stock"
+            value={stats.lowStock}
+            icon={<AlertTriangle size={42} />}
+          />
+
         </div>
 
-      </div>
+
     </>
   );
 }
