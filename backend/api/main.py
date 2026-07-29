@@ -7,13 +7,24 @@ app = FastAPI(
     description="Backend API for Smart Inventory System"
 )
 
+# app.add_middleware(
+#     CORSMiddleware,
+#     allow_origins=[
+#         "http://localhost:5173",
+#         "http://localhost:5174",
+#         "http://localhost:4173",
+#         "http://localhost:5175"
+#     ],
+#     allow_credentials=True,
+#     allow_methods=["*"],
+#     allow_headers=["*"],
+# )
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "http://localhost:5173",
-        "http://localhost:5174",
-        "http://localhost:4173",
-        "http://localhost:5175"
+        "https://smart-inventory-frontend.onrender.com",
     ],
     allow_credentials=True,
     allow_methods=["*"],
