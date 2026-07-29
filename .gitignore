@@ -2,4 +2,11 @@ node_modules/
 inventory/
 dist/
 _pycache_/
+*.pyc
+
 .env
+
+.vscode/
+
+*.db-journal
+

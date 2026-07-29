@@ -89,6 +89,19 @@
     color:#6b7280;
 }
 
+.log-btn {
+    padding: 10px 22px;
+    border: none;
+    border-radius: 8px;
+    background-color: #ef4444;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+
 @media (max-width:768px){
 
 .search-box{

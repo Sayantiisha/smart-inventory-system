@@ -23,9 +23,21 @@ function Sidebar() {
       path: "/products",
       icon: <Package size={20} />
     },
+    // {
+    //   name: "Analytics",
+    //   path: "/analytics",
+    //   icon: <BarChart3 size={20} />
+    // },
+   
     {
-      name: "Analytics",
-      path: "/analytics",
+      name: "Sales Report",
+      path: "/sales-report",
+      icon: <BarChart3 size={20} />
+    },
+
+    {
+      name: "Inventory Report",
+      path: "/inventory-report",
       icon: <BarChart3 size={20} />
     },
     {
@@ -34,8 +46,8 @@ function Sidebar() {
       icon: <Brain size={20} />
     },
     {
-      name: "Settings",
-      path: "/settings",
+      name: "Low Stock",
+      path: "/low-stock",
       icon: <Settings size={20} />
     }
   ];

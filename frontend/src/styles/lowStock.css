@@ -1,0 +1,53 @@
+.low-stock-container{
+
+    padding:30px;
+
+}
+
+.low-stock-card{
+
+    background:#ffe5e5;
+
+    border-left:6px solid red;
+
+    padding:20px;
+
+    margin-bottom:15px;
+
+    border-radius:10px;
+
+    box-shadow:0 4px 12px rgba(0,0,0,.08);
+
+}
+
+.low-stock-summary{
+
+    background:#2563eb;
+
+    color:white;
+
+    padding:15px;
+
+    border-radius:10px;
+
+    margin-bottom:20px;
+
+}
+
+.low-stock-card{
+
+    transition:.3s;
+
+}
+
+.low-stock-card:hover{
+
+    transform:translateY(-4px);
+
+}
+
+.low-stock-card h3{
+
+    margin-bottom:8px;
+
+}

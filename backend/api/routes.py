@@ -3,15 +3,26 @@ from app.database import get_connection
 from .schemas import ProductCreate , ProductUpdate , PredictionRequest
 import joblib 
 import pandas as pd
-
+from app.crud import  generate_sales_report, generate_inventory_report
 
 router = APIRouter()
+
 
 @router.get(
         "/products",
         summary="Get all Products",
         description=" Returns all Products from the Inventory Database."
         )
+
+@router.get("/sales-report")
+def sales_report():
+    return generate_sales_report()
+
+@router.get("/inventory-report")
+def inventory_report():
+    return generate_inventory_report()
+
+
 def get_products():
     connection = get_connection()
 
@@ -218,12 +229,137 @@ def health_check():
     } 
 
 
+@router.get("/dashboard/stats")
+def dashboard_stats():
+    connection = get_connection()
+    cursor = connection.cursor()
 
-@router.get("/dashboard")
-def dashboard():
-    return{
-        "totalProducts" : 250 ,
-        "totalRevenue" : 480000 ,
-        "totalSales" : 820,
-        "lowStock" : 18
+    cursor.execute("SELECT COUNT(*) FROM products")
+    total_products = cursor.fetchone()[0]
+
+    cursor.execute("SELECT AVG(unit_price) FROM products")
+    average_price = cursor.fetchone()[0]
+
+    cursor.execute("SELECT SUM(unit_price) FROM products")
+    total_value = cursor.fetchone()[0]
+
+    cursor.execute("SELECT COUNT(DISTINCT category) FROM products")
+    total_categories = cursor.fetchone()[0]
+
+    connection.close()
+
+    return {
+        "total_products" : total_products,
+        "average_price" : round(average_price, 2),
+        "total_inventory_value" : round(total_value, 2),
+        "total_categories" : total_categories
     }
+
+
+## Monthly Sales Graph ##
+
+@router.get("/dashboard/monthly-sales")
+def monthly_sales():
+
+    connection = get_connection()
+    cursor = connection.cursor()
+
+    cursor.execute("""
+        SELECT
+            strftime('%m',sale_date) AS month,
+            SUM(quantity_sold) AS total_sales
+            FROM sales
+            GROUP BY month
+            ORDER BY month
+""")
+    rows = cursor.fetchall()
+    connection.close()
+
+    month_names = {
+        "01": "Jan",
+        "02": "Feb",
+        "03": "Mar",
+        "04": "Apr",
+        "05": "May",
+        "06": "Jun",
+        "07": "Jul",
+        "08": "Aug",
+        "09": "Sep",
+        "10": "Oct",
+        "11": "Nov",
+        "12": "Dec"
+    }
+
+    return [
+        {
+            "month": month_names[row[0]],
+            "sales": row[1]
+        }
+        for row in rows
+    ]
+
+
+##  Category-Wise Pie Chart ##
+@router.get("/dashboard/category-sales")
+def category_sales():
+
+    connection = get_connection()
+    cursor = connection.cursor()
+
+    cursor.execute("""
+        SELECT
+            p.category,
+            SUM(s.quantity_sold) AS sales
+        FROM sales s
+        JOIN products p
+        ON s.product_id = p.product_id
+        GROUP BY p.category
+        ORDER BY sales DESC;
+
+    """)
+
+    rows = cursor.fetchall()
+    connection.close()
+
+    return [
+        {
+            "category" : row[0],
+            "sales" : row[1]
+        }
+        for row in rows
+    ];
+
+
+## Low Stock Alert ##
+@router.get("/low-stock")
+def low_stock():
+
+    connection = get_connection()
+    cursor = connection.cursor()
+
+    cursor.execute("""
+        SELECT
+            p.product_id,
+            p.product_name,
+            p.category,
+            i.quantity
+        FROM products p
+        JOIN inventory i
+        ON p.product_id = i.product_id
+        WHERE i.quantity < 20
+        ORDER BY i.quantity ASC;
+
+    """)
+
+    rows = cursor.fetchall()
+    connection.close()
+
+    return [
+        {
+            "product_id" : row[0],
+            "product_name" : row[1],
+            "category" : row[2],
+            "quantity" : row[3]
+        }
+        for row in rows
+    ];

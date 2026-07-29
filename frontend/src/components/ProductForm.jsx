@@ -1,13 +1,18 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-function ProductForm({ onAdd }) {
+function ProductForm({ onAdd, onUpdate, editingProduct }) {
 
     const [formData, setFormData] = useState({
         product_name: "",
         category: "",
-        unit_price: "",
-        quantity: ""
+        unit_price: ""
     });
+
+    useEffect(() => {
+        if (editingProduct){
+            setFormData(editingProduct);
+        }
+    },[editingProduct]);
 
     const handleChange = (e) => {
         setFormData({
@@ -19,15 +24,36 @@ function ProductForm({ onAdd }) {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        onAdd(formData);
+        if(
+            !formData.product_name ||
+            !formData.category ||
+            !formData.unit_price 
+        ) {
+            alert("Please fill all fields.");
+            return;
+        }
+
+        if(Number(formData.unit_price) <= 0) {
+            alert( "Price must be geater than 0.");
+            return;
+        }
+
+
+        if (editingProduct) {
+            onUpdate({
+                ...formData,
+                product_id:editingProduct.product_id
+            });
+        }else{
+           onAdd(formData); }
+           
 
         setFormData({
             product_name: "",
-            category: "",
-            unit_price: "",
-            quantity: ""
-        });
-    };
+            category:"",    
+            unit_price:"",
+        })
+    }
 
     return (
         <form className="product-form" onSubmit={handleSubmit}>
@@ -56,16 +82,9 @@ function ProductForm({ onAdd }) {
                 onChange={handleChange}
             />
 
-            <input
-                type="number"
-                name="quantity"
-                placeholder="Quantity"
-                value={formData.quantity}
-                onChange={handleChange}
-            />
 
             <button type="submit">
-                Add Product
+                {editingProduct ? "Update Product" : "Add Product"}
             </button>
 
         </form>
