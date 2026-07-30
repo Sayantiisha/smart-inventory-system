@@ -24,6 +24,7 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         # "http://localhost:5173",
+        "https://smart-inventory-system-kohl.vercel.app/",
         "https://red-salamander-222156.hostingersite.com/",
         "https://smart-inventory-frontend.onrender.com",
     ],
