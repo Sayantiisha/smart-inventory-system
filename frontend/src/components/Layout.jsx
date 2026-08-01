@@ -1,105 +1,37 @@
-// import "./../styles/layout.css";
-// import Sidebar from "./sidebar";
-// import Navbar from "./Navbar";
-// import Dashboard from "../pages/Dashboard";
-// import Prediction from "../pages/Prediction";
 
-
-// function Layout() {
-//     return (
-//         <div className="layout">
-//             <Sidebar/>
-
-//         <div className="main-content">
-//             <Navbar/>
-
-//         <div className="dashboard">
-//             <Prediction/>
-
-//         <div className="dashboard">
-//             <Dashboard/>
-
-//         <div className="dashboard">
-//             <h1>Dashboard</h1>
-
-//             <div className="cards">
-//                 <div className="card">
-//                     <h3>Total Products</h3>
-//                     <h2>0</h2>
-//                 </div>
-
-//                 <div className="card">
-//                     <h3>Total Sales</h3>
-//                     <h2>0</h2>
-//                 </div>
-
-//                 <div className="card">
-//                     <h3>Inventory Value</h3>
-//                     <h2>₹0</h2>
-//                 </div>
-
-//                 </div>
-//             </div>
-//         </div>
-//     </div>
-//     </div>
-//     </div>
-    
-//     )
-// }
-
-// export default Layout;
-
-// import { Outlet } from "react-router-dom";
-
-// import Sidebar from "./sidebar";
-// import Navbar from "./Navbar";
-
-// import "../styles/layout.css";
-// import "../styles/dashboard.css";
-
-// function Layout() {
-//     return (
-//         <div className="layout">
-//             <Sidebar />
-
-//             <div className="main-content">
-//                 <Navbar />
-
-//                 <div className="dashboard">
-//                     <Outlet />
-//                 </div>
-//             </div>
-//         </div>
-//     );
-// }
-
-// export default Layout;
-
-
+import { useState } from "react";
 import { Outlet } from "react-router-dom";
+
 import Sidebar from "./Sidebar";
 import Navbar from "./Navbar";
-import Footer from "./Footer"
+import Footer from "./Footer";
+
 import "../styles/layout.css";
 
-function Layout({ children }) {
+function Layout() {
+
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
   return (
     <div className="layout">
 
-      <Sidebar />
+      <Sidebar
+        open={sidebarOpen}
+        closeSidebar={() => setSidebarOpen(false)}
+      />
 
       <div className="main-content">
 
-        <Navbar />
+        <Navbar
+          toggleSidebar={() => setSidebarOpen(true)}
+        />
 
         <div className="page-content">
-            
-          <Outlet/>
+          <Outlet />
         </div>
 
-        <Footer/>
-        
+        <Footer />
+
       </div>
 
     </div>

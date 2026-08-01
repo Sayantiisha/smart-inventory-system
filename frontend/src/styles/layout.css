@@ -1,15 +1,74 @@
-.layout{
-    display:flex;
-}
-body{
-    background:#f5f7fb;
-}
-.main-content{
-    flex:1;
-    background:#f5f7fb;
-    min-height:100vh;
+
+.layout {
+  display: flex;
+  min-height: 100vh;
 }
 
-.page-content{
-    padding:25px;
+/* Body */
+body {
+  margin: 0;
+  background: #f5f7fb;
+  overflow-x: hidden;
 }
+
+/* =========================
+   Main Content
+========================= */
+
+
+.main-content{
+
+    margin-left:250px;
+
+    width:calc(100% - 250px);
+
+    min-height:100vh;
+
+    display:flex;
+
+    flex-direction:column;
+
+    background:#f5f7fb;
+
+}
+
+
+
+
+/* Page */
+
+.page-content {
+  flex: 1;
+  padding: 25px;
+}
+
+/* =========================
+   Large Tablet
+========================= */
+
+@media (max-width: 1199px) {
+
+  .main-content {
+    margin-left: 250px;
+    width: calc(100% - 250px);
+  }
+
+}
+
+/* =========================
+   Small Tablet & Mobile
+========================= */
+
+@media (max-width: 991px) {
+
+  .main-content {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .page-content {
+    padding: 15px;
+  }
+
+}
+

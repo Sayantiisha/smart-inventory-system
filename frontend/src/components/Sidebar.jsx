@@ -6,10 +6,12 @@ import {
   Brain,
   Settings
 } from "lucide-react";
-
 import "../styles/sidebar.css";
+import { Menu, X } from "lucide-react";
+import { useState } from "react";
 
-function Sidebar() {
+
+function Sidebar({ open, closeSidebar }) {
   const location = useLocation();
 
   const menuItems = [
@@ -53,26 +55,43 @@ function Sidebar() {
   ];
 
   return (
-    <aside className="sidebar">
-      <h2 className="logo">
-        Smart<span>AI</span>
-      </h2>
+   <>
+{/* 
+  <button
+    className="menu-btn"
+    onClick={() => setOpen(!open)}
+  >
+    {open ? <X size={28} /> : <Menu size={28} />}
+  </button> */}
 
-      <nav>
-        {menuItems.map((item) => (
-          <Link
-            key={item.name}
-            to={item.path}
-            className={
-              location.pathname === item.path ? "active" : ""
-            }
-          >
-            {item.icon}
-            <span>{item.name}</span>
-          </Link>
-        ))}
-      </nav>
-    </aside>
+   {open && (
+    <div
+      className="sidebar-overlay"
+      onClick={closeSidebar}
+    />
+  )}
+
+  <aside className={`sidebar ${open ? "show" : ""}`}>
+    <h2 className="logo">
+      Smart<span>AI</span>
+    </h2>
+
+    <nav>
+      {menuItems.map((item) => (
+        <Link
+          key={item.name}
+          to={item.path}
+          className={location.pathname === item.path ? "active" : ""}
+          // onClick={() => setOpen(false)}
+          onClick={closeSidebar}
+        >
+          {item.icon}
+          <span>{item.name}</span>
+        </Link>
+      ))}
+    </nav>
+  </aside>
+</>
   );
 }
 
