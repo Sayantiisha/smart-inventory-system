@@ -225,6 +225,7 @@ const currentProducts = products
 return (
 
     <div>
+        
 
         <h1 className="page-title">
             Products
@@ -242,13 +243,33 @@ return (
         />
 
 
+        {}
+
+
+        <div className="filter-container" style={{ display: "flex" ,  justifyContent: "space-between" }}>
+
         {/* =========================
-            Category Filter
+            Search
         ========================= */}
 
-        <div className="filter-container">
+        <div className="search-container">
 
-            <select
+            <input
+                type="text"
+                placeholder="Search products..."
+                value={searchTerm}
+                onChange={(e) =>
+                    setSearchTerm(e.target.value)
+                }
+            />
+
+        </div>
+
+        { /* =========================
+                    Category Filter
+                ========================= */ }
+
+           <select
                 value={selectedCategory}
                 onChange={(e) =>
                     setSelectedCategory(e.target.value)
@@ -276,136 +297,69 @@ return (
                 </option>
 
             </select>
-
-        </div>
-
-
-        {/* =========================
-            Search
-        ========================= */}
-
-        <div className="search-container">
-
-            <input
-                type="text"
-                placeholder="Search products..."
-                value={searchTerm}
-                onChange={(e) =>
-                    setSearchTerm(e.target.value)
-                }
-            />
-
-        </div>
-
-
+ </div>
         {/* =========================
             Products Table
         ========================= */}
+  
+        <div className="table-wrapper">
+                <table className="product-table">
 
-        <table className="product-table">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Product</th>
+                        <th>Category</th>
+                        <th>Price</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
 
-            <thead>
-
-                <tr>
-
-                    <th>ID</th>
-
-                    <th>Product</th>
-
-                    <th>Category</th>
-
-                    <th>Price</th>
-
-                    <th>Actions</th>
-
-                </tr>
-
-            </thead>
-
-
-            <tbody>
-
-                {/* {products
-
-                    .filter((product) => {
-
-                        const matchSearch =
-                            String(product.product_name || "")
-                                .toLowerCase()
-                                .includes(
-                                    searchTerm.toLowerCase()
-                                );
-
-
-                        const matchCategory =
-                            selectedCategory === "" ||
-                            product.category === selectedCategory;
-
-
-                        return (
-                            matchSearch &&
-                            matchCategory
-                        );
-
-                    }) */}
-
+                    <tbody>
                     {currentProducts.map((product, index) => (
-
                         <tr
-                            key={
-                                product.product_id ??
-                                `${product.product_name}-${index}`
-                            }
+                        key={
+                            product.product_id ??
+                            `${product.product_name}-${index}`
+                        }
                         >
+                        <td data-label="ID">
+                            {product.product_id}
+                        </td>
 
-                            <td>
-                                {product.product_id}
-                            </td>
+                        <td data-label="Product">
+                            {product.product_name}
+                        </td>
 
-                            <td>
-                                {product.product_name}
-                            </td>
+                        <td data-label="Category">
+                            {product.category}
+                        </td>
 
-                            <td>
-                                {product.category}
-                            </td>
+                        <td data-label="Price">
+                            ₹ {product.unit_price}
+                        </td>
 
-                            <td>
-                                ₹ {product.unit_price}
-                            </td>
+                        <td data-label="Actions" className="action-buttons">
+                            <button
+                            className="edit-btn"
+                            onClick={() => handleEdit(product)}
+                            >
+                            Edit
+                            </button>
 
-                            <td>
-
-                                <button
-                                    className="edit-btn"
-                                    onClick={() =>
-                                        handleEdit(product)
-                                    }
-                                >
-                                    Edit
-                                </button>
-
-
-                                <button
-                                    className="delete-btn"
-                                    onClick={() =>
-                                        handleDelete(
-                                            product.product_id
-                                        )
-                                    }
-                                >
-                                    Delete
-                                </button>
-
-                            </td>
-
+                            <button
+                            className="delete-btn"
+                            onClick={() => handleDelete(product.product_id)}
+                            >
+                            Delete
+                            </button>
+                        </td>
                         </tr>
-
                     ))}
+                    </tbody>
 
-            </tbody>
-
-        </table>
+                </table>
+                </div>
      
 
      {/* // Pagination / */}
