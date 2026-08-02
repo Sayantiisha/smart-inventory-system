@@ -166,41 +166,6 @@ function SalesReport() {
 </div>
       
 
-      {/* <table className="sales-table">
-        <thead>
-          <tr>
-            <th>Sale ID</th>
-            <th>Product</th>
-            <th>Category</th>
-            <th>Qty Sold</th>
-            <th>Unit Price</th>
-            <th>Total Sale</th>
-            <th>Date</th>
-          </tr>
-        </thead>
-
-        <tbody>
-           {currentSales.length > 0 ? (
-            currentSales.map((sale) => (
-                <tr key={sale.sale_id}>
-                <td>{sale.sale_id}</td>
-                <td>{sale.product_name}</td>
-                <td>{sale.category}</td>
-                <td>{sale.quantity_sold}</td>
-                <td>₹ {sale.unit_price}</td>
-                <td>₹ {sale.total_sale}</td>
-                <td>{sale.sale_date}</td>
-                </tr>
-            ))
-        ) : (
-            <tr>
-                <td colSpan="7" style={{textAlign: "center"}}>
-                    No Sales record found.
-                </td>
-            </tr>
-        )}
-        </tbody>
-      </table> */}
     <div className="table-wrapper">
         <table className="sales-table">
             <thead>

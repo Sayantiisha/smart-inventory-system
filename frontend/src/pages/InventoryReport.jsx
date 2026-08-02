@@ -135,6 +135,7 @@ function InventoryReport() {
 
 </div>
 
+    <div className="table-wrapper">
       <table className="inventory-table">
         <thead>
           <tr>
@@ -147,7 +148,7 @@ function InventoryReport() {
           </tr>
         </thead>
 
-        <tbody>
+        {/* <tbody>
     
             {currentInventory.map((item, index) => (
                 <tr key={`${item.product_id} -${index}`} className={item.quantity < 20? "low-stock" : ""}>
@@ -161,8 +162,46 @@ function InventoryReport() {
                 <td>₹ {item.stock_value}</td>
                 </tr>
         ))}
+        </tbody> */}
+
+    <tbody>
+        {currentInventory.map((item, index) => (
+            <tr
+            key={`${item.product_id}-${index}`}
+            className={item.quantity < 20 ? "low-stock" : ""}
+            >
+            <td data-label="ID">{item.product_id}</td>
+
+            <td data-label="Product">
+                {item.product_name}
+            </td>
+
+            <td data-label="Category">
+                {item.category}
+            </td>
+
+            <td data-label="Quantity">
+                {item.quantity}
+
+                {item.quantity < 20 && (
+                <span className="stock-warning">
+                    Low Stock
+                </span>
+                )}
+            </td>
+
+            <td data-label="Unit Price">
+                ₹ {item.unit_price}
+            </td>
+
+            <td data-label="Stock Value">
+                ₹ {item.stock_value}
+            </td>
+            </tr>
+        ))}
         </tbody>
       </table>
+        </div>
 
       {/* ## Pagination ##  */}
       <div className="pagination">
