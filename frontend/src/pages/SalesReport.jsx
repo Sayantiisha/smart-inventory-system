@@ -163,57 +163,10 @@ function SalesReport() {
             <option value="Home">Home</option>
         </select>
     </div> 
-
-    {/* <div className="date-filter">
-        <input
-            type="date"
-            value={fromDate}
-            onChange={(e)=>setFromDate(e.target.value)}
-        />
-
-        <input
-            type="date"
-            value={toDate}
-            onChange={(e)=>setToDate(e.target.value)}
-        />
-    </div> */}
-
 </div>
-             {/* ## Search Box ## */}
+      
 
-          {/* <div className="sales-search">
-                <input type="text" placeholder="Search Product..." value={search} onChange={(e) =>
-                    setSearch(e.target.value)
-                } />
-
-          </div> */}
-
-
-       {/* {Search Box} */}
-{/* 
-       <div className="date-filter">
-
-            <div>
-                <label>From</label>
-                <input
-                type="date"
-                value={fromDate}
-                onChange={(e) => setFromDate(e.target.value)}
-                />
-            </div>
-
-            <div>
-                <label>To</label>
-                <input
-                type="date"
-                value={toDate}
-                onChange={(e) => setToDate(e.target.value)}
-                />
-            </div>
-
-            </div> */}
-
-      <table className="sales-table">
+      {/* <table className="sales-table">
         <thead>
           <tr>
             <th>Sale ID</th>
@@ -247,7 +200,44 @@ function SalesReport() {
             </tr>
         )}
         </tbody>
-      </table>
+      </table> */}
+    <div className="table-wrapper">
+        <table className="sales-table">
+            <thead>
+            <tr>
+                <th>Sale ID</th>
+                <th>Product</th>
+                <th>Category</th>
+                <th>Qty Sold</th>
+                <th>Unit Price</th>
+                <th>Total Sale</th>
+                <th>Date</th>
+            </tr>
+            </thead>
+    <tbody>
+        {currentSales.length > 0 ? (
+            currentSales.map((sale) => (
+            <tr key={sale.sale_id}>
+                <td data-label="Sale ID">{sale.sale_id}</td>
+                <td data-label="Product">{sale.product_name}</td>
+                <td data-label="Category">{sale.category}</td>
+                <td data-label="Qty Sold">{sale.quantity_sold}</td>
+                <td data-label="Unit Price">₹ {sale.unit_price}</td>
+                <td data-label="Total Sale">₹ {sale.total_sale}</td>
+                <td data-label="Date">{sale.sale_date}</td>
+            </tr>
+            ))
+        ) : (
+            <tr>
+            <td colSpan="7" style={{ textAlign: "center" }}>
+                No Sales Record Found
+            </td>
+            </tr>
+        )}
+         </tbody>
+        </table>
+        </div>
+       
 
       <div className="pagination">
         <button disabled={currentPage === 1} onClick={() => setCurrentPage(currentPage - 1)}>
@@ -262,7 +252,9 @@ function SalesReport() {
 
       </div>
 
-      <button onClick={exportPDF}>Export PDF</button>
+      <button className="export-btn" onClick={exportPDF}>
+        Export PDF
+      </button>
 
      
     </div>
